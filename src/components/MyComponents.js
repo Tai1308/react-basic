@@ -1,48 +1,19 @@
 import React from "react";
+import UserInfor from "./Userinfor";
+import DisplayInfor from "./DisplayInfor";
 
 class MyComponent extends React.Component {
-  state = {
-    name: "Tai",
-    address: "Ha Noi",
-    age: "23",
-  };
-
-  handleClick = (event) => {
-    console.log(">> Click my button");
-    console.log("My name is  ", this.state.name);
-
-    this.setState({
-      name: "Luyen",
-    });
-  };
-
-  handleOnMoverOver(event) {
-    console.log(event.pageX);
-  }
-
-  handleOnChangeInput = (event) => {
-    this.setState({
-      name: event.target.value,
-    });
-  };
-
-  handleOnSubmit = (event) => {
-    event.preventDefault();
-    console.log(this.state);
-  };
-
   //JSX
   render() {
+    const myInfor = ["a", "b", "c"];
     return (
       <div>
-        my name is {this.state.name}
-        <form onSubmit={(event) => this.handleOnSubmit(event)}>
-          <input
-            type="text"
-            onChange={(event) => this.handleOnChangeInput(event)}
-          />
-          <button>Submit</button>
-        </form>
+        <UserInfor />
+        <br />
+        <br />
+        <DisplayInfor name="Nguyen Tan Tai" age="24" />
+        <hr />
+        <DisplayInfor name="Tan Tai" age={24} myInfor={myInfor} />
       </div>
     );
   }
