@@ -7,9 +7,18 @@ class MyComponent extends React.Component {
     age: "23",
   };
 
+  handleClick(event) {
+    console.log(">> Click my button");
+  }
+
   //JSX
   render() {
-    return <div> my name is{this.state.name}</div>;
+    return (
+      <div>
+        my name is{this.state.name}
+        <button onClick={this.handleClick}>Click me</button>
+      </div>
+    );
   }
 }
 
