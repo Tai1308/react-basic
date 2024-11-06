@@ -9,7 +9,7 @@ class MyComponent extends React.Component {
 
   handleClick = (event) => {
     console.log(">> Click my button");
-    console.log("My name is ", this.state.name);
+    console.log("My name is  ", this.state.name);
 
     this.setState({
       name: "Luyen",
@@ -20,19 +20,29 @@ class MyComponent extends React.Component {
     console.log(event.pageX);
   }
 
+  handleOnChangeInput = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
+  };
+
+  handleOnSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state);
+  };
+
   //JSX
   render() {
     return (
       <div>
-        my name is{this.state.name}
-        <button onMouseOver={this.handleOnMoverOver}>Hover me</button>
-        <button
-          onClick={(event) => {
-            this.handleClick(event);
-          }}
-        >
-          Click me
-        </button>
+        my name is {this.state.name}
+        <form onSubmit={(event) => this.handleOnSubmit(event)}>
+          <input
+            type="text"
+            onChange={(event) => this.handleOnChangeInput(event)}
+          />
+          <button>Submit</button>
+        </form>
       </div>
     );
   }
